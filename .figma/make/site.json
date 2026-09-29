@@ -1,0 +1,11 @@
+{
+  "title": "AppFusesc",
+  "description": "This web application streamlines the prototyping process for designers and developers, enabling rapid creation and testing of app concepts to enhance user experience.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
