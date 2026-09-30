@@ -8,6 +8,7 @@ import RendaSheet from "../components/RendaSheet";
 import InformeSheet from "../components/InformeSheet";
 import { PLANO } from "../lib/regras";
 import { REFERENCIA, RENTABILIDADE, fmtPct } from "../lib/carteira";
+import Ajustado from "../components/Ajustado";
 
 // Mês da última lâmina publicada, ex.: "ago".
 const mesCurto = REFERENCIA.mes.slice(0, 3);
@@ -139,9 +140,10 @@ export default function InicioPage({
                 ? { background: DESTAQUE.noite, border: `1px solid ${DESTAQUE.menta}40` }
                 : { background: "rgba(255,255,255,0.15)" }}>
               <p className="text-xs text-white/85">{s.l}</p>
-              <p className="text-sm font-semibold mt-0.5 leading-tight break-words flex items-center gap-1"
+              <p className="text-sm font-semibold mt-0.5 leading-tight flex items-center gap-1 min-w-0"
                 style={s.destaque ? { color: DESTAQUE.menta } : undefined}>
-                {s.destaque && <Icon.Trend size={13} />}{s.v}
+                {s.destaque && <span className="flex-shrink-0"><Icon.Trend size={13} /></span>}
+                <Ajustado className="flex-1 min-w-0">{s.v}</Ajustado>
               </p>
             </div>
           ))}

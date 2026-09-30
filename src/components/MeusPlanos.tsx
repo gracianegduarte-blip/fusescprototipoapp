@@ -1,5 +1,6 @@
 import { DESTAQUE, Icon, MASK, brl, type Conta, type ProdutoId, type Theme } from "../shared";
 import { PRODUTOS } from "../lib/produtos";
+import Ajustado from "./Ajustado";
 
 export function IconeProduto({ produto, size = 20 }: { produto: ProdutoId; size?: number }) {
   if (produto === "futuro") return <Icon.Trend size={size} />;
@@ -62,7 +63,7 @@ export default function MeusPlanos({ theme, contas, contaAtiva, hidden, onSelect
                 </span>
               </span>
               <span className="block text-sm font-bold" style={{ color: theme.text }}>{p.nome}</span>
-              <span className="block text-xs" style={{ color: theme.muted }}>{resumoPlano(c, hidden)}</span>
+              <Ajustado className="text-xs" style={{ color: theme.muted }}>{resumoPlano(c, hidden)}</Ajustado>
             </button>
           );
         })}

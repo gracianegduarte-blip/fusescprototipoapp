@@ -9,6 +9,7 @@ import StickyFooter from "../components/StickyFooter";
 import PixQr from "../components/PixQr";
 import { PRODUTOS } from "../lib/produtos";
 import { AVISO_RENTABILIDADE, FUSESC, PLANO } from "../lib/regras";
+import Ajustado from "../components/Ajustado";
 
 const pctTaxa = String(PLANO.rentabilidadeSimulacao * 100).replace(".", ",");
 
@@ -791,7 +792,7 @@ export default function AportesPage({ theme, conta, hidden, isTitular, initialVa
             ].map((s) => (
               <div key={s.l} className="rounded-xl p-3" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }}>
                 <p className="text-xs mb-1" style={{ color: "rgba(255,255,255,0.75)" }}>{s.l}</p>
-                <p className="text-sm font-bold" style={{ color: s.c }}>{s.v}</p>
+                <Ajustado className="text-sm font-bold" style={{ color: s.c }}>{s.v}</Ajustado>
               </div>
             ))}
           </div>

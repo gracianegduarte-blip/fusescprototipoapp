@@ -53,7 +53,7 @@ export default function ContaSwitcher({ contas, contaAtiva, theme, onSelect, onC
                       </div>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-sm font-bold" style={{ color: theme.text }}>{resumoPlano(c, hidden)}</p>
+                      <p className="text-sm font-bold whitespace-nowrap" style={{ color: theme.text }}>{resumoPlano(c, hidden)}</p>
                       <p className="text-xs" style={{ color: theme.muted }}>{c.fase === "recebendo" && c.rendaMensal ? "renda" : "saldo"}</p>
                     </div>
                     {ativa && (

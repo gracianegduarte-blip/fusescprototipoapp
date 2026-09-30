@@ -5,6 +5,7 @@ import Sheet from "../components/Sheet";
 import PgblCard from "../components/PgblCard";
 import RendaSheet from "../components/RendaSheet";
 import { PLANO, projetar, rendaEstimada } from "../lib/regras";
+import Ajustado from "../components/Ajustado";
 
 function Slider({ theme, id, label, value, min, max, step = 1, fmt, onChange }: {
   theme: Theme; id: string; label: string; value: number; min: number; max: number; step?: number;
@@ -75,7 +76,7 @@ export default function SimuladorPage({ theme, conta, hidden, onUpdateConta, sho
             ].map((s) => (
               <div key={s.l} className="rounded-2xl p-3.5" style={{ background: "rgba(255,255,255,0.14)" }}>
                 <p className="text-xs text-white/85 mb-1">{s.l}</p>
-                <p className="text-sm font-bold" style={{ color: s.highlight ? "#FFD580" : "#fff" }}>{s.v}</p>
+                <Ajustado className="text-sm font-bold" style={{ color: s.highlight ? "#FFD580" : "#fff" }}>{s.v}</Ajustado>
               </div>
             ))}
           </div>
@@ -162,7 +163,7 @@ export default function SimuladorPage({ theme, conta, hidden, onUpdateConta, sho
           ].map((s) => (
             <div key={s.l} className="rounded-2xl p-3.5" style={{ background: "rgba(255,255,255,0.14)" }}>
               <p className="text-xs text-white/85 mb-1">{s.l}</p>
-              <p className="text-sm font-bold" style={{ color: s.highlight ? "#FFD580" : "#fff" }}>{s.v}</p>
+              <Ajustado className="text-sm font-bold" style={{ color: s.highlight ? "#FFD580" : "#fff" }}>{s.v}</Ajustado>
             </div>
           ))}
         </div>

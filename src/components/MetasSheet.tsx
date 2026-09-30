@@ -5,6 +5,7 @@ import {
   type CenarioId, type MetaRascunho, type Objetivo,
 } from "../lib/explorar";
 import { AVISO_RENTABILIDADE, PLANO } from "../lib/regras";
+import Ajustado from "./Ajustado";
 
 function Slider({ theme, id, label, value, min, max, step, fmt, onChange }: {
   theme: Theme; id: string; label: string; value: number; min: number; max: number; step: number;
@@ -86,7 +87,7 @@ export default function MetasSheet({ theme, onSignup }: { theme: Theme; onSignup
                 </span>
               )}
               <span className="block text-xs font-semibold leading-tight mb-1" style={{ color: theme.muted }}>{x.label}</span>
-              <span className="block text-sm font-bold leading-tight break-words" style={{ color: theme.text }}>{brl0(x.saldoFinal)}</span>
+              <Ajustado className="text-sm font-bold leading-tight" style={{ color: theme.text }}>{brl0(x.saldoFinal)}</Ajustado>
             </button>
           );
         })}
@@ -94,20 +95,21 @@ export default function MetasSheet({ theme, onSignup }: { theme: Theme; onSignup
 
       <div className="rounded-3xl p-5 text-white mb-4" style={{ background: `linear-gradient(145deg, ${theme.accent}, ${theme.accentMid})` }}>
         <p className="text-xs uppercase tracking-wide text-white/85 mb-1">{c.hint}</p>
-        <p className="text-2xl font-bold mb-1">{brl0(c.saldoFinal)}</p>
+        <Ajustado className="text-2xl font-bold mb-1">{brl0(c.saldoFinal)}</Ajustado>
         <p className="text-xs text-white/85 mb-4">
           {atinge ? "Você atinge a sua meta." : `Faltam ${brl0(meta - c.saldoFinal)} para a meta.`}
         </p>
         <div className="grid grid-cols-2 gap-2">
           {[
-            { l: "Aporte mensal", v: c.ultimoAporte !== c.primeiroAporte ? `${brl0(c.primeiroAporte)} → ${brl0(c.ultimoAporte)}` : brl0(c.primeiroAporte) },
+            { l: "Aporte mensal", v: brl0(c.primeiroAporte), sub: c.ultimoAporte !== c.primeiroAporte ? `sobe até ${brl0(c.ultimoAporte)}` : undefined },
             { l: "Total aportado", v: brl0(c.totalAportado) },
             { l: "Renda estimada", v: `${brl0(c.rendaMensal)}/mês` },
             { l: "Economia no IR/ano", v: brl0(economiaIrAnual(c.primeiroAporte)) },
-          ].map((s) => (
-            <div key={s.l} className="rounded-2xl p-3" style={{ background: "rgba(255,255,255,0.14)" }}>
+          ].map((s: { l: string; v: string; sub?: string }) => (
+            <div key={s.l} className="rounded-2xl p-3 min-w-0" style={{ background: "rgba(255,255,255,0.14)" }}>
               <p className="text-xs text-white/85 mb-0.5">{s.l}</p>
-              <p className="text-xs font-bold break-words">{s.v}</p>
+              <Ajustado className="text-sm font-bold">{s.v}</Ajustado>
+              {s.sub && <Ajustado className="text-xs text-white/85 mt-0.5">{s.sub}</Ajustado>}
             </div>
           ))}
         </div>

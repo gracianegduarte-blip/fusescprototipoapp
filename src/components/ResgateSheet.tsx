@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ANO_ATUAL, Icon, MASK, brl, haptic, type Conta, type Theme, corConta } from "../shared";
 import { PLANO, TABELA_REGRESSIVA } from "../lib/regras";
+import Ajustado from "./Ajustado";
 
 const PARCELAS = [1, 6, PLANO.resgateParcelasMax];
 
@@ -68,7 +69,7 @@ export default function ResgateSheet({ theme, conta, hidden, onClose }: {
                 className="min-h-14 rounded-2xl px-2 py-2 text-center"
                 style={{ background: on ? theme.tagBg : theme.inputBg, border: `2px solid ${on ? theme.accent : theme.border}` }}>
                 <span className="block text-sm font-bold" style={{ color: theme.text }}>{p === 1 ? "À vista" : `${p}x`}</span>
-                <span className="block text-xs" style={{ color: theme.muted }}>{p === 1 ? "parcela única" : hidden ? "mensais" : `${brl(conta.saldo / p)}/mês`}</span>
+                <Ajustado className="text-xs" style={{ color: theme.muted }}>{p === 1 ? "parcela única" : hidden ? "mensais" : `${brl(conta.saldo / p)}/mês`}</Ajustado>
               </button>
             );
           })}
